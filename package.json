@@ -18,11 +18,13 @@
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "dotenv": "^17.2.3",
+    "localtunnel": "^2.0.2",
     "lucide-react": "^0.562.0",
     "next": "16.1.1",
     "pg": "^8.16.3",
     "react": "19.2.3",
     "react-dom": "19.2.3",
+    "svix": "^1.84.1",
     "tailwind-merge": "^3.4.0"
   },
   "devDependencies": {
