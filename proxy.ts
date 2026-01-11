@@ -1,7 +1,8 @@
 import { clerkMiddleware , createRouteMatcher } from '@clerk/nextjs/server';
-import {clerkClient } from "@clerk/nextjs/server";
 import { NextResponse } from 'next/server';
+import { createClerkClient } from '@clerk/backend'
 
+const clerkClient = createClerkClient({ secretKey: process.env.CLERK_SECRET_KEY })
 
 const publicRoutes = [
   "/",
@@ -35,10 +36,8 @@ export default clerkMiddleware(async (auth, req) => {
 if( userId ) {
  try {
 
-        // const user = await clerkClient.users.getUser(userId); // Fetch user data from Clerk
-        // const role = user.publicMetadata.role as string | undefined;
-const role = sessionClaims?.publicMetadata?.role as string | undefined
-
+        const user = await clerkClient.users.getUser(userId); // Fetch user data from Clerk
+        const role = user.publicMetadata.role as string | undefined;
 if(role === undefined) {
 console.error("User role is undefined in public metadata");
 
